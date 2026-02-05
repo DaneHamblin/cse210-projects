@@ -1,0 +1,42 @@
+@startuml SimplifiedJournalDiagram
+
+title Journal Program - Simplified Class Structure
+left to right direction
+
+class Program {
+    -Main()
+    -DisplayMenu()
+    -WriteNewEntry()
+    -SaveJournal()
+    -LoadJournal()
+}
+
+class Journal {
+    -entries: List<Entry>
+    -prompts: List<string>
+    __
+    +AddEntry()
+    +DisplayAll()
+    +GetRandomPrompt()
+    +SaveToFile()
+    +LoadFromFile()
+}
+
+class Entry {
+    +Date: string
+    +Prompt: string
+    +Response: string
+    __
+    +Display()
+    +FormatForFile()
+}
+
+Program --> Journal : creates
+Journal "1" *-- "*" Entry : contains
+
+note on link
+    Uses composition because
+    Journal owns the Entries
+end note
+
+@enduml
