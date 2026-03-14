@@ -1,34 +1,42 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 
 public class Entry
 {
-    // Needed variables
-    public string Date { get; set; }
-    public string Prompt { get; set; }
-    public string Response { get; set; }
+    private string _date;
+    private string _prompt;
+    private string _response;
 
-    // Construct object
     public Entry(string date, string prompt, string response)
     {
-        Date = date;
-        Prompt = prompt;
-        Response = response;
+        _date = date;
+        _prompt = prompt;
+        _response = response;
     }
 
-    // Method to display the entry
+    public string GetDate()
+    {
+        return _date;
+    }
+
+    public string GetPrompt()
+    {
+        return _prompt;
+    }
+
+    public string GetResponse()
+    {
+        return _response;
+    }
+
     public void Display()
     {
-        Console.WriteLine($"Date: {Date}");
-        Console.WriteLine($"Prompt: {Prompt}");
-        Console.WriteLine($"Response: {Response}");
-        Console.WriteLine();
+        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"Prompt: {_prompt}");
+        Console.WriteLine($"Response: {_response}");
     }
 
-    // Method to format entry for file storage
     public string FormatForFile()
     {
-        return $"{Date}|{Prompt}|{Response}";
+        return $"{_date}|{_prompt}|{_response}";
     }
 }
