@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class Scripture
 {
@@ -25,7 +24,13 @@ public class Scripture
         }
 
         Random random = new Random();
-        _shuffledIndices = _shuffledIndices.OrderBy(x => random.Next()).ToList();
+        for (int i = _shuffledIndices.Count - 1; i > 0; i--)
+        {
+            int j = random.Next(i + 1);
+            int temp = _shuffledIndices[i];
+            _shuffledIndices[i] = _shuffledIndices[j];
+            _shuffledIndices[j] = temp;
+        }
     }
 
     public void HideNextWords(int numberToHide)
