@@ -32,7 +32,6 @@ public class ReflectionActivity : Activity
         _random = new Random();
         _availableQuestions = new List<string>();
         
-        // Initialize available questions with all questions
         ResetAvailableQuestions();
     }
 
@@ -47,17 +46,15 @@ public class ReflectionActivity : Activity
 
     private string GetRandomQuestion()
     {
-        // If no questions are available, reset the list
+
         if (_availableQuestions.Count == 0)
         {
             ResetAvailableQuestions();
         }
 
-        // Pick a random question from the available list
         int index = _random.Next(_availableQuestions.Count);
         string selectedQuestion = _availableQuestions[index];
         
-        // Remove the selected question so it won't be used again until reset
         _availableQuestions.RemoveAt(index);
         
         return selectedQuestion;

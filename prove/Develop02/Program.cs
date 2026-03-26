@@ -57,18 +57,14 @@ class Program
     {
         Console.WriteLine("\n--- New Journal Entry ---");
         
-        // Get current date
         string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         
-        // Get random prompt
         string prompt = journal.GetRandomPrompt();
         Console.WriteLine($"Prompt: {prompt}");
         
-        // Get user response
         Console.Write("Your response: ");
         string response = Console.ReadLine();
         
-        // Add entry to journal
         journal.AddEntry(currentDate, prompt, response);
         Console.WriteLine("Entry added successfully!");
     }
@@ -80,7 +76,6 @@ class Program
         
         if (!string.IsNullOrWhiteSpace(filename))
         {
-            // Add .txt extension if it's not there
             if (!filename.Contains("."))
             {
                 filename += ".txt";
